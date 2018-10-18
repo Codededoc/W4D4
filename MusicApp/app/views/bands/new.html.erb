@@ -1,0 +1,8 @@
+<h1>Please enter band name: </h1>
+
+<form action=" <%= bands_url %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <label for="band_name"></label>
+  <input id="band_name" type="text" name="band[name]" value="">
+  <input type="submit" name="" value="Register Band">
+</form>

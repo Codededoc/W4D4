@@ -1,0 +1,20 @@
+<h2> Log in, user! </h2>
+
+<form class="forms" action="<%= session_url %>" method="post">
+<%- #references to urls should always be in printed erb tags -%>
+
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">
+<%- #the form_authenticity_token should always be in printed erb tags -%>
+
+  <label for="user_email">Email: </label>
+  <input id="user_email" type="text" name="user[email]" value="">
+
+<br/>
+  <label for="user_password">Password:</label>
+  <input id="user_pssword" type="password" name="user[password]" value="">
+
+<br/>
+  <input type="submit" name="" value="Log in">
+
+
+</form>

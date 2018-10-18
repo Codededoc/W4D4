@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MusicApp</title>
+    <%=  %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+<h1> Music App! </h1>
+
+
+  <body>
+    <div class='container'>
+    <% if current_user.nil? %>
+      <%- #if there's no current user, -%>
+      <%- # direct user to either sign-up(user-new.html.erb) or log-in(session-new.html.erb)-%>
+      <a href=" <%= new_user_url %> ">Sign up</a>
+      <a href=" <%= new_session_url %>">Log in</a>
+    <div/>
+
+    <% else %>
+      <%- # display current_user -%>
+      <%= current_user.email %>
+      <%- # provide a form to sign-out-%>
+      <%- # provide a form to sign-out-%>
+      <form class="forms" action=" <%= session_url %> " method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">
+        <input type="submit" name="" value="Sign out">
+      </form>
+    <% end %>
+
+
+    <% if flash[:errors] %>
+    <%- # use flash[:errors] when READING errors, flash.now[:errors] for SETTING errors -%>
+    <ul>
+      <% flash[:errors].each do |err| %>
+        <li> <%= err %> </li>
+      <% end %>
+    </ul>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
