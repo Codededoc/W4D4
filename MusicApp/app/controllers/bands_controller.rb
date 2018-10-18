@@ -2,8 +2,10 @@ class BandsController < ApplicationController
 
   #3
   def index
+    @bands = Band.all
+    # generate an instance of all bands
     render :index
-    #list of all the bands in our table
+    # list of all the bands in our table
   end
 
   #2
@@ -11,7 +13,7 @@ class BandsController < ApplicationController
     # submits new band to be added to database
     # redirect to index page
 
-    @band = Band.new(band_params)
+    @band = current_user.bands.new(band_params)
 
     if @band.save
       redirect_to bands_url
@@ -29,11 +31,13 @@ class BandsController < ApplicationController
   end
 
   def edit
+    @cat = current_user.bands.find_by(params[:id])
     render :edit
     # form page to edit information
   end
 
   def show
+    @band = Band.find(params[:id])
     render :show
     # band's profile page
   end

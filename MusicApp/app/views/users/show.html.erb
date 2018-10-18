@@ -1,1 +1,17 @@
 <h1>Hi <%= current_user.email %>, welcome to your profile page!</h1>
+
+<br/>
+
+<h2>Click the button below to add a band</h2>
+<form action="<%= new_band_url %>" method="get">
+  <label for="adding_band"></label>
+  <input id="add_band" type="submit" name="" value="Add Band">
+
+<h2>Here are your bands. Click "See Band" to see more information about your band. </h2>
+  <% current_user.bands.each do |band| %>
+      <%= band.name %>
+    <form action="<%=band_url%>" method="get">
+      <label for="see_band"></label>
+      <input id="see_band" type="submit" name="" value="See Band">
+    </form>
+  <% end %>

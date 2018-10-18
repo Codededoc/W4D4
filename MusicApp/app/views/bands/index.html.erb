@@ -1,3 +1,11 @@
 <h1>Here are all the bands!</h1>
 
-<%  %>
+<ul>
+    <% @bands.each do |band| %>
+    <li>
+      <%= band.users.email %>
+      :
+      <%= band.name %>
+    </li>
+    <% end %>
+</ul>

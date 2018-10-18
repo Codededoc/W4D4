@@ -29,6 +29,11 @@ class User < ApplicationRecord
   validates :password,  length: { minimum: 8, allow_nil: true }
   validates :session_token,  presence: true, uniqueness: true
 
+  has_many  :bands,
+    primary_key: :id,
+    foreign_key:  :user_id, 
+    class_name: :Band
+
   after_initialize  :ensure_session_token
     #sets session_token before validation if it's not present
 

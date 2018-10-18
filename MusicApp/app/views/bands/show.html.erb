@@ -1,0 +1,12 @@
+<h1> Here is your band </h1>
+
+<%= @band.name %>
+<p>You can update or delete your band</p>
+<form action="<%=band_url%>" method="patch">
+  <input type="submit" name="" value="Update">
+
+
+<form action="<%=band_url%>" method="delete">
+  <input type="submit" name="" value="Delete">
+
+</form>
